@@ -1,6 +1,8 @@
-FROM ubuntu:22.04
-LABEL maintainer="yoyoblue"
-RUN apt-get update && apt-get install python3 -y
-COPY hello.py /
-EXPOSE 8888
-CMD ["python3","/hello.py"]
+FROM ubuntu:20.04
+LABEL maintainer="Andrew KIM"
+RUN apt-get update \
+    && apt-get install -y python3 python3-pip
+RUN pip3 install --no-cache-dir flask
+COPY hello.py .
+EXPOSE 80
+CMD ["python3", "/hello.py"]
